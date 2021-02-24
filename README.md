@@ -18,7 +18,7 @@ Lets say you were to input a "b" and a "g" into the question where the narrartor
 
 With that in mind. You have various abilities you are given as you answer narrator's questions. Your attributes are dependent on several variables (for now) age, height, and gender of the character you created. These variables will be defined into your speed, charisma, strength, and accuracy.  
 
-As time goes on, I will work more on this game and will talk to the narrator about different task to give the player, but until then it stands as a small unbeatable game where you die in the first stage you enter (for now).  
+As time goes on, I will work more on this game and will talk to the narrator about different task to give the player, but until then, it stands as a small unbeatable game where you die in the first stage you enter (for now).  
 
 I hope everyone that can see this will be able to enjoy this little demo of what the vision of this game can be.  
 
