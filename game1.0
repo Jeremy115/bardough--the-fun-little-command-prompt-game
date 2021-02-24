@@ -1,0 +1,451 @@
+using System;
+using System.Text.RegularExpressions;
+using System.Linq;
+
+namespace FirstCsharpcode
+{
+    class Program
+    {
+        public static bool BetweenRanges(double a, double b, double number)
+        {
+            return (a <= number && number <= b);
+        }
+        static async System.Threading.Tasks.Task Main(string[] args)
+        {
+            //Create the player by inheritance of the player class. 
+            PlayerClass player1 = new PlayerClass();
+
+            //Begin the game. Continue with the space bar. 
+            Console.Write("This is a game made for the bold.\nAnyone one who tries" +
+                " fails.\nTo begin press the spacebar. ");
+            while (Console.ReadKey().Key != ConsoleKey.Spacebar) ;
+
+
+            //Aak for the name. While giving delay to ask for the name. 
+            Console.WriteLine("\n\n\nTell me brave one...\n\n");
+            await System.Threading.Tasks.Task.Delay(2000);
+
+            //Stores the players name into player1
+            Console.Write("What is your name?: ");
+            player1.name = Console.ReadLine();
+
+
+            //Get some additional Information from the user that will give them thier strengths and weaknesses. 
+            try
+            {
+
+                Console.WriteLine("To continue your faithful Jounry. I need some more information about yourself.");
+                await System.Threading.Tasks.Task.Delay(2400);
+
+
+                Console.Write("\nTell me.. What is your age?: "); //Gets players age. 
+                String number = ReadNumber();       //Uses a public static method that prevents any keys besides numbers to be inputted. 
+                int playerage = Convert.ToInt32(number);      //converts our number string to an int. 
+
+                while (playerage < 0)
+                {
+                    //Probably never AND SHOULD NOT be able to ever see this text... but just in case someone ever finds a way...
+                    Console.WriteLine("\nCome on.. Im not a fool. you have to be some age? Right?");
+                    await System.Threading.Tasks.Task.Delay(2000);
+                    Console.WriteLine("How did you even get here anyways?? \n" + "I specifically made it to where you cant see this message *sigh*...");
+                    await System.Threading.Tasks.Task.Delay(2500);
+                    Console.WriteLine("Just answer the question right this time....");
+                    Console.Write("Lets try this again... \n What is your age?: ");
+                    String numberR = ReadNumber();
+                    playerage = Convert.ToInt32(numberR);
+                }
+
+                if (playerage <= 17 && playerage >= 0)
+                {
+                    /*fun little you must be 18 in order to play this game bit.
+                    And some fun affects by waiting each message. The Narator wants someone to play the game but not at the same time.
+                    He is sort of grieving by the fact that they can not play the game, but will never show or admit it*/
+                    Console.WriteLine("Im sorry young one but you have to be at least 18 years of age.");
+                    await System.Threading.Tasks.Task.Delay(2000);
+                    Console.WriteLine("Well..");
+                    await System.Threading.Tasks.Task.Delay(2000);
+                    Console.WriteLine("Im sorry to say this...");
+                    await System.Threading.Tasks.Task.Delay(1500);
+                    Console.WriteLine("But you must leave.....");
+                    await System.Threading.Tasks.Task.Delay(1450);
+                    Console.WriteLine("I hate to say this... but you left yourself no choice..");
+                    await System.Threading.Tasks.Task.Delay(3000);
+                    Console.WriteLine("press any key to leave... ");
+
+                    Console.ReadKey();//lets player leave when any key is pressed. 
+                    Environment.Exit(0);
+                }
+                else if (playerage >= 18 && playerage <= 25)
+                {
+                    //If player is between 18 and 25 then give them these attributes. 
+                    player1.speed = 5;
+                    player1.accuracy = 3;
+                    player1.strength = 3;
+                    player1.charisma = 4;
+                    player1.age = playerage;
+
+
+                    //Introduction about the skill tree. 
+                    Console.WriteLine("So you are " + player1.age + " years old");
+                    Console.WriteLine("Very well.. ");
+                    Console.WriteLine("I forgot to mention.. your age affects your stats...");
+                    Console.WriteLine("So remember what I am about to tell you, it just might save your life.");
+                    Console.WriteLine("Your stats are based on a scale of 1-8 with 8 being the highest possible stat.");
+                    await System.Threading.Tasks.Task.Delay(2000);
+                    Console.WriteLine("Here are your stats based off your age:\nSpeed: " + player1.speed);
+                    await System.Threading.Tasks.Task.Delay(2000);
+                    Console.WriteLine("Accuracy: " + player1.accuracy);
+                    await System.Threading.Tasks.Task.Delay(2000);
+                    Console.WriteLine("Strength: " + player1.strength);
+                    await System.Threading.Tasks.Task.Delay(2000);
+                    Console.WriteLine("Charisma: " + player1.charisma);
+                    await System.Threading.Tasks.Task.Delay(3000);
+
+                    Console.WriteLine("Once you feel you know your Stats press the <SPACEBAR> key to continue. \n\n");
+                    while (Console.ReadKey().Key != ConsoleKey.Spacebar) ;
+
+                }
+                else if (playerage >= 26 && playerage <= 45)
+                {
+
+                    //If player is between 26 and 45 give them these attributes
+                    player1.speed = 3;
+                    player1.accuracy = 2;
+                    player1.strength = 4;
+                    player1.charisma = 3;
+                    player1.age = playerage;
+
+                    //Skill tree introduiction. 
+                    Console.WriteLine("So you are " + player1.age + " years old");
+                    Console.WriteLine("Very well.. ");
+                    Console.WriteLine("I forgot to mention.. your age affects your stats...");
+                    Console.WriteLine("So remember what I am about to tell you, it just might save your life.");
+                    Console.WriteLine("Your stats are based on a scale of 1-8 with 8 being the highest possible stat.");
+                    await System.Threading.Tasks.Task.Delay(2000);
+                    Console.WriteLine("Here are your stats based off your age:\nSpeed: " + player1.speed);
+                    await System.Threading.Tasks.Task.Delay(2000);
+                    Console.WriteLine("Accuracy: " + player1.accuracy);
+                    await System.Threading.Tasks.Task.Delay(2000);
+                    Console.WriteLine("Strength: " + player1.strength);
+                    await System.Threading.Tasks.Task.Delay(2000);
+                    Console.WriteLine("Charisma: " + player1.charisma);
+                    await System.Threading.Tasks.Task.Delay(3000);
+
+                    Console.WriteLine("Once you feel you know your Stats press the <SPACEBAR> key to continue. \n\n");
+                    while (Console.ReadKey().Key != ConsoleKey.Spacebar) ;
+                }
+                else if (playerage >= 46)
+                {
+                    //If player is older than 46 give these attributes. 
+                    player1.speed = 2;
+                    player1.accuracy = 4;
+                    player1.strength = 3;
+                    player1.charisma = 4;
+                    player1.age = playerage;
+
+                    //Skill tree introduction. 
+                    Console.WriteLine("So you are " + player1.age + " years old");
+                    Console.WriteLine("Very well.. ");
+                    Console.WriteLine("I forgot to mention.. your age affects your stats...");
+                    Console.WriteLine("So remember what I am about to tell you, it just might save your life.");
+                    Console.WriteLine("Your stats are based on a scale of 1-8 with 8 being the highest possible stat.");
+                    await System.Threading.Tasks.Task.Delay(2000);
+                    Console.WriteLine("Here are your stats based off your age:\nSpeed: " + player1.speed);
+                    await System.Threading.Tasks.Task.Delay(2000);
+                    Console.WriteLine("Accuracy: " + player1.accuracy);
+                    await System.Threading.Tasks.Task.Delay(2000);
+                    Console.WriteLine("Strength: " + player1.strength);
+                    await System.Threading.Tasks.Task.Delay(2000);
+                    Console.WriteLine("Charisma: " + player1.charisma);
+                    await System.Threading.Tasks.Task.Delay(3000);
+
+                    Console.WriteLine("Once you feel you know your Stats press the <SPACEBAR> key to continue.\n\n");
+                    while (Console.ReadKey().Key != ConsoleKey.Spacebar) ;
+                }
+
+
+
+
+
+
+                //Gets player gender. Will increase strength if boy and decrease if girl. But Charisma and accuracy goes up if girl. 
+                Console.WriteLine("I still need more information warrior.");
+                Console.Write("are you a boy or girl?(b/g): ");
+                string gen = ReadLetter();
+                //If player has put input for both b and g for gender, it can not contain both b and g for the options below. 
+                //We need to prevent this with a while. And gives a fun little text.       
+                if (gen.ToLower().Contains('b') && gen.ToLower().Contains('g'))
+                {
+                    Console.WriteLine("Hold on now....\n\n");
+                    await System.Threading.Tasks.Task.Delay(1500);
+                    Console.WriteLine("You cant press both b and g at the same time...");
+                    Console.WriteLine("I mean.. you can be both sure.. but I cannot allow that for this game.");
+                    await System.Threading.Tasks.Task.Delay(2200);
+                    Console.WriteLine("The creator was to lazy to add such a character... He probably was lazy when he made this game..");
+                    await System.Threading.Tasks.Task.Delay(4000);
+                    Console.WriteLine("So... \nI have to ask again....");
+                    await System.Threading.Tasks.Task.Delay(2600);
+                    Console.Write("Are you a boy or a girl?(b/g): ");
+                    gen = string.Empty;
+                    gen = ReadLetter();
+                }
+
+                while (gen.ToLower().Contains('b') && gen.ToLower().Contains('g'))
+                {
+                    Console.WriteLine("\n\n......"); //\nreally? you know I have to ask again. Right?");
+                    await System.Threading.Tasks.Task.Delay(2200);
+                    Console.WriteLine("really? you know I have to ask again. Right?");
+                    await System.Threading.Tasks.Task.Delay(1000);
+                    Console.Write("Are you a boy or a girl?(b/g): ");
+                    gen = string.Empty;
+                    gen = ReadLetter();
+                }
+
+            
+                //If player is b then if shall determine if b or g. cannot contain anything else(Complete with the ReadLetter function) 
+                if (gen.ToLower().Contains('b'))//If player is boy. 
+                {
+                    Console.WriteLine("\n\nSo you are a boy then..");       //Confirms users gender
+                    await System.Threading.Tasks.Task.Delay(2000);           //Delay for affects
+                    Console.WriteLine("Since you are a boy. I will increase your strength by one.");   //Let player know his stats have changed. 
+                    player1.strength += 1;   //Increase player strength in PlayerClass so we can use for later. 
+                    await System.Threading.Tasks.Task.Delay(2000);              //Delay for effects. 
+                    Console.WriteLine("Here are your new stats: \nStrength: " + player1.strength + "\nAccuracy: " +
+                        player1.accuracy + "\nCharisma: " + player1.charisma + "\nSpeed: " + player1.speed + "\n\n");   //Show new stats. 
+
+                    Console.WriteLine("Once you are done look at your new stats press the <ENTERKEY> to continue");//When player is ready. then press ENTER to continue. 
+                    player1.gender = "b"; 
+                    while (Console.ReadKey().Key != ConsoleKey.Enter) ; //Executes the enter command to continue. 
+
+                }
+                if (gen.ToLower().Contains('g'))//If player is girl.
+                {
+                    Console.WriteLine("\n\nSo you are a girl then..");
+                    await System.Threading.Tasks.Task.Delay(2000);
+                    Console.WriteLine("Since you are a girl.. I will decrease your strength. \nBUT that means your Charisma and accuracy will go up");
+                    player1.charisma += 1;
+                    player1.accuracy += 1;
+                    player1.strength -= 1;
+                    Console.WriteLine("Here are your new stats: \nStrength: " + player1.strength +
+                        "\nAccuracy: " + player1.accuracy + "\nCharisma: " + player1.charisma + "\nSpeed: " + player1.speed +
+                        "\n\n");
+                    Console.WriteLine("Once you are done look at your new stats press the <ENTERKEY> to continue");
+                    player1.gender = "g"; 
+                    while (Console.ReadKey().Key != ConsoleKey.Enter) ;
+                }
+
+
+
+                Console.WriteLine("Now... ");
+                await System.Threading.Tasks.Task.Delay(2000);
+                Console.WriteLine("Dont get offended by this question...\nbut creator made me do this..\nI must ask.");
+                await System.Threading.Tasks.Task.Delay(2400);
+                Console.WriteLine("And PLEASE answer correctly for ex: 4.6, 5.7, 7.1");
+                await System.Threading.Tasks.Task.Delay(1000);
+
+
+                string height1; 
+                bool valueIsGood;
+                double parsedValue;
+                do
+                {
+                     
+                    Console.Write("What is your height?:");
+                    height1 = ReadNumberForHeight();
+                    
+                    valueIsGood = string.IsNullOrEmpty(height1) == false && double.TryParse(height1, out parsedValue) && parsedValue >= 3.00 && parsedValue <= 12.5; 
+
+                    
+                     if (!valueIsGood)
+                    {
+                        await System.Threading.Tasks.Task.Delay(1000);
+                        Console.WriteLine("\n\nUhh I am not dumb..");
+                        await System.Threading.Tasks.Task.Delay(2000);
+                        Console.WriteLine("I am going to ask you until I get your correct height..");
+                        await System.Threading.Tasks.Task.Delay(2700);
+                        Console.WriteLine("You can only be small as 3.0 and as tall as 12.5"); 
+                        Console.WriteLine("So I am going to ask again...\n");
+                        await System.Threading.Tasks.Task.Delay(4000); 
+                    }
+                }
+                while (!valueIsGood);
+                player1.height = Convert.ToDouble(height1);
+                 
+
+                //Gives player option to say yes or no to the task. 
+                Console.Write("\n\n" + player1.name + " remember, many have tried and they all.. have failed..." +
+                    "\nAre you sure you are ready for this challenge?(y/n): ");
+                string result = ReadAnswerForQuest();
+
+                while(result.Contains('y') && result.Contains('n'))
+                {
+                    Console.WriteLine("\nI need a real answer warrior.");
+                    Console.WriteLine("Yes or no this time.");
+                    await System.Threading.Tasks.Task.Delay(2000);
+                    Console.Write("Are you sure you are ready for this challenge ? (Y / N) : ");
+                    result = string.Empty; 
+                    result = ReadAnswerForQuest();
+
+
+                }
+
+                if (result.Contains('y'))
+                {
+                    await System.Threading.Tasks.Task.Delay(2000);
+                    Console.WriteLine("\n\nVery well...");
+                    Console.WriteLine("Your task shall begin upon pressing <SPACEBAR> key.");
+
+                    while (Console.ReadKey().Key != ConsoleKey.Spacebar) ;
+
+                    Console.WriteLine("You entered the first dungion");
+                    await System.Threading.Tasks.Task.Delay(3400);
+                    Console.WriteLine("and you died...");
+                    Console.WriteLine("I told you people always die but you were up to the challenge");
+                    await System.Threading.Tasks.Task.Delay(4000);
+                    Console.WriteLine("The moral of this story was just for fun at the end of the day. ");
+                    Console.WriteLine("But this game is over now.");
+                    await System.Threading.Tasks.Task.Delay(4000);
+                    Console.WriteLine("Goodbye player. Press anykey to leave.");
+                    Console.WriteLine("But thank you for playing my game"); 
+
+                    Console.ReadKey();
+                    Environment.Exit(0); 
+
+
+                    
+
+
+                }
+                if (result.Contains('n'))
+                {
+                    await System.Threading.Tasks.Task.Delay(2000);
+                    Console.WriteLine("\n\nVery smart of you " + player1.name);
+                    Console.WriteLine("This game is now over.");
+                    Console.WriteLine("Press any key to quit.");
+                    Console.ReadKey();
+                    Environment.Exit(0); 
+
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("something went wrong...\nIt seems you have messed everything up with inputs!!");
+                await System.Threading.Tasks.Task.Delay(4000);
+                Console.WriteLine("\nYOU MUST LEAVE NOW!!!");
+                Console.WriteLine("PRESS ANY KEY TO LEAVE NOW!!!!");
+                Console.ReadKey();
+                Environment.Exit(0);
+            }
+
+
+        }
+
+        //Restrict any input besides a number to be selected. Used for age. 
+        private static string ReadNumber()
+        {
+            string input = "";
+            do
+            {
+                ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+                if (char.IsNumber(keyInfo.KeyChar))
+                {
+                    input = input + keyInfo.KeyChar;
+                    Console.Write(keyInfo.KeyChar);
+                }
+                if (keyInfo.Key == ConsoleKey.Enter)
+                {
+                    Console.WriteLine();
+                    break;
+                }
+                if (keyInfo.Key == ConsoleKey.Backspace)
+                {
+                    input = input.Substring(0, input.Length - 1);
+                    Console.Write("\b \b");
+                }
+            } while (true);
+            return input;
+        }
+        //Restrict any input besides b and g for gender
+        public static string ReadLetter()
+        {
+            string input = "";
+            do
+            {
+                ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+                if (char.IsLetter(keyInfo.KeyChar) && keyInfo.KeyChar == 'b' || keyInfo.KeyChar == 'g')
+                {
+
+                    input = input + keyInfo.KeyChar;
+                    Console.Write(keyInfo.KeyChar);
+                }
+                if (keyInfo.Key == ConsoleKey.Enter)
+                {
+                    Console.WriteLine();
+                    break;
+                }
+                if (keyInfo.Key == ConsoleKey.Backspace)
+                {
+                    input = input.Substring(0, input.Length - 1);
+                    Console.Write("\b \b");
+                }
+            } while (true);
+            return input;
+
+
+        }
+        private static string ReadNumberForHeight()
+        {
+            string input = "";
+            do
+            {
+                ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+                if (char.IsNumber(keyInfo.KeyChar) || keyInfo.KeyChar == '.')
+                {
+                    input = input + keyInfo.KeyChar;
+                    Console.Write(keyInfo.KeyChar);
+                }
+                
+                if (keyInfo.Key == ConsoleKey.Enter)
+                {
+                    Console.WriteLine();
+                    break;
+                }
+                if (keyInfo.Key == ConsoleKey.Backspace)
+                {
+                    input = input.Substring(0, input.Length - 1);
+                    Console.Write("\b \b");
+                }
+                
+            } while (true);
+            return input;
+        }
+        public static string ReadAnswerForQuest()
+        {
+            string input = "";
+            do
+            {
+                ConsoleKeyInfo keyInfo = Console.ReadKey(true);
+                if (char.IsLetter(keyInfo.KeyChar) && keyInfo.KeyChar == 'y' || keyInfo.KeyChar == 'n')
+                {
+
+                    input = input + keyInfo.KeyChar;
+                    Console.Write(keyInfo.KeyChar);
+                }
+                if (keyInfo.Key == ConsoleKey.Enter)
+                {
+                    Console.WriteLine();
+                    break;
+                }
+                if (keyInfo.Key == ConsoleKey.Backspace)
+                {
+                    input = input.Substring(0, input.Length - 1);
+                    Console.Write("\b \b");
+                }
+            } while (true);
+            return input;
+
+
+        }
+    }
+   
+}
