@@ -1,0 +1,23 @@
+using System;
+
+namespace FirstCsharpcode
+{
+    //made to hold player attributes. 
+    //If a level can change a players stats this is where they can be stored and used. 
+    class PlayerClass
+    {
+
+        //Player has to have information of player. 
+        public string name;
+        public int age;
+        public string gender;
+        public double height;
+        
+
+        //Players attributes that will calculate their abilities. 
+        public double speed;
+        public double strength;
+        public double accuracy;
+        public double charisma;
+    }
+}
